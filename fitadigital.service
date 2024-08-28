@@ -1,0 +1,14 @@
+[Unit]
+Description=Servico da fita digital
+After=network.target serial-getty@ttyS0.service
+Wants=serial-getty@ttyS0.service
+
+[Service]
+ExecStart=/usr/bin/python3 /home/steriliza/fitadigital_raspberry/ler_serial.py & /usr/bin/python3 /home/steriliza/fitadigital_raspberry/ler_arquivo.py
+WorkingDirectory=/home/steriliza/fitadigital_raspberry
+Restart=always
+User=steriliza
+Group=steriliza
+
+[Install]
+WantedBy=default.target
